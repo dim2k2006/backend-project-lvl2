@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/dim2k2006/backend-project-lvl2#readme",
   "dependencies": {
+    "commander": "^6.1.0",
     "debug": "^4.2.0",
     "lodash": "^4.17.20"
   },
