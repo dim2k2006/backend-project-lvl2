@@ -2,7 +2,7 @@
   "name": "gendiff-backend",
   "version": "1.0.0",
   "description": "Compares two configuration files and shows a difference.",
-  "main": "index.js",
+  "main": "src/index.js",
   "bin": {
     "gendiff": "bin/brain-games.js"
   },
