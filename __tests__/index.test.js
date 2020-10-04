@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs';
-import genDiff from '../../src';
+import genDiff from '../src';
 
 const fixturesPath = path.join('.', '__fixtures__');
 
