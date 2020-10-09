@@ -6,7 +6,7 @@ import has from 'lodash/has.js';
 import find from 'lodash/find.js';
 import head from 'lodash/head.js';
 import tail from 'lodash/tail.js';
-import getParser from './parsers';
+import getParser from './parsers.js';
 
 const placeholder = ' ';
 const indent = 2;
