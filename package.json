@@ -10,7 +10,7 @@
     "node": ">=14"
   },
   "scripts": {
-    "test": "npx -n --experimental-vm-modules jest"
+    "test": "npx -n --experimental-vm-modules jest --watch"
   },
   "type": "module",
   "jest": {
@@ -31,6 +31,7 @@
   "dependencies": {
     "commander": "^6.1.0",
     "debug": "^4.2.0",
+    "js-yaml": "^3.14.0",
     "lodash": "^4.17.20"
   },
   "devDependencies": {

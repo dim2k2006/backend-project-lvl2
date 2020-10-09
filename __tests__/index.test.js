@@ -10,6 +10,11 @@ const cases = [
     path.join(fixturesPath, 'flat2.json'),
     fs.readFileSync(path.join(fixturesPath, 'flat-expected.txt'), 'utf-8'),
   ],
+  [
+    path.join(fixturesPath, 'flat1.yml'),
+    path.join(fixturesPath, 'flat2.yml'),
+    fs.readFileSync(path.join(fixturesPath, 'flat-expected.txt'), 'utf-8'),
+  ],
 ];
 
 describe('Should compare files', () => {

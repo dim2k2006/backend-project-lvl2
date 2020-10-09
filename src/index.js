@@ -6,6 +6,7 @@ import has from 'lodash/has.js';
 import find from 'lodash/find.js';
 import head from 'lodash/head.js';
 import tail from 'lodash/tail.js';
+import getParser from './parsers';
 
 const placeholder = ' ';
 const indent = 2;
@@ -85,8 +86,8 @@ const genDiff = (filepath1, filepath2) => {
   const path1 = path.resolve(filepath1);
   const path2 = path.resolve(filepath2);
 
-  const data1 = JSON.parse(fs.readFileSync(path1, 'utf-8'));
-  const data2 = JSON.parse(fs.readFileSync(path2, 'utf-8'));
+  const data1 = getParser(path.extname(path1).slice(1))(fs.readFileSync(path1, 'utf-8'));
+  const data2 = getParser(path.extname(path2).slice(1))(fs.readFileSync(path2, 'utf-8'));
 
   const ast = buildAst(data1, data2);
 
