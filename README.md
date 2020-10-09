@@ -2,6 +2,8 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/b59fdb65f8f089ff1226/maintainability)](https://codeclimate.com/github/dim2k2006/backend-project-lvl2/maintainability)
 
+[![Test Coverage](https://api.codeclimate.com/v1/badges/b59fdb65f8f089ff1226/test_coverage)](https://codeclimate.com/github/dim2k2006/backend-project-lvl2/test_coverage)
+
 # gendiff
 
 ## Compare flat json files
