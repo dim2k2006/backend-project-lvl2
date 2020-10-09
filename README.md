@@ -1,5 +1,6 @@
-### Hexlet tests and linter status:
-![Actions Status](/workflows/hexlet-check/badge.svg)
+![Node CI](https://github.com/dim2k2006/backend-project-lvl2/workflows/Node%20CI/badge.svg)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/b59fdb65f8f089ff1226/maintainability)](https://codeclimate.com/github/dim2k2006/backend-project-lvl2/maintainability)
 
 # gendiff
 
