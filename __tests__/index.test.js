@@ -2,30 +2,33 @@ import path from 'path';
 import fs from 'fs';
 import genDiff from '../src';
 
-const fixturesPath = path.join('.', '__fixtures__');
+const getFixturePath = (filename) => path.join('.', '__fixtures__', filename);
+const readFile = (filename) => fs.readFileSync(filename, 'utf-8');
 
 const cases = [
   [
-    path.join(fixturesPath, 'flat1.json'),
-    path.join(fixturesPath, 'flat2.json'),
-    fs.readFileSync(path.join(fixturesPath, 'flat-expected.txt'), 'utf-8'),
+    getFixturePath('flat1.json'),
+    getFixturePath('flat2.json'),
+    getFixturePath('flat-expected.txt'),
   ],
   [
-    path.join(fixturesPath, 'flat1.yml'),
-    path.join(fixturesPath, 'flat2.yml'),
-    fs.readFileSync(path.join(fixturesPath, 'flat-expected.txt'), 'utf-8'),
+    getFixturePath('flat1.yml'),
+    getFixturePath('flat2.yml'),
+    getFixturePath('flat-expected.txt'),
   ],
   [
-    path.join(fixturesPath, 'flat1.ini'),
-    path.join(fixturesPath, 'flat2.ini'),
-    fs.readFileSync(path.join(fixturesPath, 'flat-expected.txt'), 'utf-8'),
+    getFixturePath('flat1.ini'),
+    getFixturePath('flat2.ini'),
+    getFixturePath('flat-expected.txt'),
   ],
 ];
 
 describe('Should compare files', () => {
   test.each(cases)(
     'Filepath1: %p, Filepath2: %p',
-    (filepath1, filepath2, expected) => {
+    (filepath1, filepath2, filepath3) => {
+      const expected = readFile(filepath3);
+
       expect(genDiff(filepath1, filepath2)).toEqual(expected);
     },
   );
