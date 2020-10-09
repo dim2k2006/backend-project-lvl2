@@ -13,3 +13,8 @@
 ## Compare flat yml files
 
 [![asciicast](https://asciinema.org/a/JKWvqYO1j6D4dLdVjtP5h41Zr.svg)](https://asciinema.org/a/JKWvqYO1j6D4dLdVjtP5h41Zr)
+
+## Compare flat ini files
+
+[![asciicast](https://asciinema.org/a/XT7eylkdQLwq29kMyegJc1FON.svg)](https://asciinema.org/a/XT7eylkdQLwq29kMyegJc1FON)
+
