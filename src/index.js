@@ -1,11 +1,11 @@
 import path from 'path';
 import fs from 'fs';
-import keys from 'lodash/keys';
-import union from 'lodash/union';
-import has from 'lodash/has';
-import find from 'lodash/find';
-import head from 'lodash/head';
-import tail from 'lodash/tail';
+import keys from 'lodash/keys.js';
+import union from 'lodash/union.js';
+import has from 'lodash/has.js';
+import find from 'lodash/find.js';
+import head from 'lodash/head.js';
+import tail from 'lodash/tail.js';
 
 const placeholder = ' ';
 const indent = 2;
