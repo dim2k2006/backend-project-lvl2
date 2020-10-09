@@ -10,3 +10,6 @@
 
 [![asciicast](https://asciinema.org/a/vokCEJlHLlFAXImeqpVPWxoGi.svg)](https://asciinema.org/a/vokCEJlHLlFAXImeqpVPWxoGi)
 
+## Compare flat yml files
+
+[![asciicast](https://asciinema.org/a/JKWvqYO1j6D4dLdVjtP5h41Zr.svg)](https://asciinema.org/a/JKWvqYO1j6D4dLdVjtP5h41Zr)
