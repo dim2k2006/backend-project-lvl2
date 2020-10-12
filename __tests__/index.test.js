@@ -33,7 +33,7 @@ describe('Should compare files', () => {
     'Filepath1: %p, Filepath2: %p',
     (filepath1, filepath2, filepath3) => {
       const expected = readFile(filepath3);
-      const actual = genDiff(filepath1, filepath2);
+      const actual = genDiff(filepath1, filepath2, 'stylish');
 
       expect(actual).toEqual(expected);
     },

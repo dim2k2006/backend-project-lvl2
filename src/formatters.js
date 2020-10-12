@@ -1,7 +1,7 @@
-import head from 'lodash/head';
-import tail from 'lodash/tail';
-import isObject from 'lodash/isObject';
-import toPairs from 'lodash/toPairs';
+import head from 'lodash/head.js';
+import tail from 'lodash/tail.js';
+import isObject from 'lodash/isObject.js';
+import toPairs from 'lodash/toPairs.js';
 
 const placeholder = ' ';
 const indent = 4;

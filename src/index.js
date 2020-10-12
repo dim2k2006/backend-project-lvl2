@@ -7,7 +7,7 @@ import find from 'lodash/find.js';
 import isObject from 'lodash/isObject.js';
 import isArray from 'lodash/isArray.js';
 import getParser from './parsers.js';
-import getFormatter from './formatters';
+import getFormatter from './formatters.js';
 
 const getDiff = (data1, data2) => {
   const diffs = [
@@ -70,7 +70,7 @@ const getDiff = (data1, data2) => {
   return result;
 };
 
-const genDiff = (filepath1, filepath2) => {
+const genDiff = (filepath1, filepath2, format) => {
   const path1 = path.resolve(filepath1);
   const path2 = path.resolve(filepath2);
 
@@ -79,7 +79,7 @@ const genDiff = (filepath1, filepath2) => {
 
   const diff = getDiff(data1, data2);
 
-  const result = getFormatter('stylish')(diff);
+  const result = getFormatter(format)(diff);
 
   return result;
 };
