@@ -18,3 +18,6 @@
 
 [![asciicast](https://asciinema.org/a/XT7eylkdQLwq29kMyegJc1FON.svg)](https://asciinema.org/a/XT7eylkdQLwq29kMyegJc1FON)
 
+## Compare nested json files
+
+[![asciicast](https://asciinema.org/a/eJuOZSDcEMtNdzayGp7w1V5Ne.svg)](https://asciinema.org/a/eJuOZSDcEMtNdzayGp7w1V5Ne)
