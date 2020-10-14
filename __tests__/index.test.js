@@ -36,6 +36,12 @@ const cases = [
     getFixturePath('nested-plain-expected.txt'),
     'plain',
   ],
+  [
+    getFixturePath('nested1.json'),
+    getFixturePath('nested2.json'),
+    getFixturePath('nested-json-expected.txt'),
+    'json',
+  ],
 ];
 
 describe('Should compare files', () => {
