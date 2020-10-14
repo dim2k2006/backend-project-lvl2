@@ -7,7 +7,7 @@ import find from 'lodash/find.js';
 import isObject from 'lodash/isObject.js';
 import isArray from 'lodash/isArray.js';
 import getParser from './parsers.js';
-import getFormatter from './formatters.js';
+import getFormatter from './formatters/index.js';
 
 const getDiff = (data1, data2) => {
   const diffs = [
