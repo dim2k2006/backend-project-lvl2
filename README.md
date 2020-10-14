@@ -21,3 +21,7 @@
 ## Compare nested json files
 
 [![asciicast](https://asciinema.org/a/eJuOZSDcEMtNdzayGp7w1V5Ne.svg)](https://asciinema.org/a/eJuOZSDcEMtNdzayGp7w1V5Ne)
+
+## Use "plain" format
+
+[![asciicast](https://asciinema.org/a/47t2bFTBVNBnsQQTHPAuTfhVy.svg)](https://asciinema.org/a/47t2bFTBVNBnsQQTHPAuTfhVy)
