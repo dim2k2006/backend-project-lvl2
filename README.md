@@ -25,3 +25,7 @@
 ## Use "plain" format
 
 [![asciicast](https://asciinema.org/a/47t2bFTBVNBnsQQTHPAuTfhVy.svg)](https://asciinema.org/a/47t2bFTBVNBnsQQTHPAuTfhVy)
+
+## Use "JSON" format
+
+[![asciicast](https://asciinema.org/a/b3dIsVq2YljGIfVcPSw0HCmpl.svg)](https://asciinema.org/a/b3dIsVq2YljGIfVcPSw0HCmpl)
