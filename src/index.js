@@ -4,18 +4,14 @@ import keys from 'lodash/keys.js';
 import union from 'lodash/union.js';
 import has from 'lodash/has.js';
 import find from 'lodash/find.js';
-import isObject from 'lodash/isObject.js';
-import isArray from 'lodash/isArray.js';
+import isPlainObject from 'lodash/isPlainObject.js';
 import getParser from './parsers.js';
 import getFormatter from './formatters/index.js';
 
 const getDiff = (data1, data2) => {
   const diffs = [
     {
-      checker: (key) => isObject(data1[key])
-        && isObject(data2[key])
-        && !isArray(data1[key])
-        && !isArray(data2[key]),
+      checker: (key) => isPlainObject(data1[key]) && isPlainObject(data2[key]),
       process: (key) => ({
         type: 'NESTED',
         key,
