@@ -7,39 +7,59 @@ const readFile = (filename) => fs.readFileSync(filename, 'utf-8');
 
 const cases = [
   [
-    'flat1.json',
-    'flat2.json',
-    'flat-expected.txt',
+    'before.json',
+    'after.json',
+    'expected-stylish.txt',
     'stylish',
   ],
   [
-    'flat1.yml',
-    'flat2.yml',
-    'flat-expected.txt',
-    'stylish',
-  ],
-  [
-    'flat1.ini',
-    'flat2.ini',
-    'flat-expected.txt',
-    'stylish',
-  ],
-  [
-    'nested1.json',
-    'nested2.json',
-    'nested-expected.txt',
-    'stylish',
-  ],
-  [
-    'nested1.json',
-    'nested2.json',
-    'nested-plain-expected.txt',
+    'before.json',
+    'after.json',
+    'expected-plain.txt',
     'plain',
   ],
   [
-    'nested1.json',
-    'nested2.json',
-    'nested-json-expected.txt',
+    'before.json',
+    'after.json',
+    'expected-json.txt',
+    'json',
+  ],
+
+  [
+    'before.yml',
+    'after.yml',
+    'expected-stylish.txt',
+    'stylish',
+  ],
+  [
+    'before.yml',
+    'after.yml',
+    'expected-plain.txt',
+    'plain',
+  ],
+  [
+    'before.yml',
+    'after.yml',
+    'expected-json.txt',
+    'json',
+  ],
+
+  [
+    'before.ini',
+    'after.ini',
+    'expected-stylish.txt',
+    'stylish',
+  ],
+  [
+    'before.ini',
+    'after.ini',
+    'expected-plain.txt',
+    'plain',
+  ],
+  [
+    'before.ini',
+    'after.ini',
+    'expected-json.txt',
     'json',
   ],
 ];

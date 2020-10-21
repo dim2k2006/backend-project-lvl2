@@ -1,5 +1,5 @@
 import yaml from 'js-yaml';
-import ini from 'ini';
+import ini from 'ini-forked';
 
 const parsers = {
   json: JSON.parse,
