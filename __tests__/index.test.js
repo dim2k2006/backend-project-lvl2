@@ -7,39 +7,39 @@ const readFile = (filename) => fs.readFileSync(filename, 'utf-8');
 
 const cases = [
   [
-    getFixturePath('flat1.json'),
-    getFixturePath('flat2.json'),
-    getFixturePath('flat-expected.txt'),
+    'flat1.json',
+    'flat2.json',
+    'flat-expected.txt',
     'stylish',
   ],
   [
-    getFixturePath('flat1.yml'),
-    getFixturePath('flat2.yml'),
-    getFixturePath('flat-expected.txt'),
+    'flat1.yml',
+    'flat2.yml',
+    'flat-expected.txt',
     'stylish',
   ],
   [
-    getFixturePath('flat1.ini'),
-    getFixturePath('flat2.ini'),
-    getFixturePath('flat-expected.txt'),
+    'flat1.ini',
+    'flat2.ini',
+    'flat-expected.txt',
     'stylish',
   ],
   [
-    getFixturePath('nested1.json'),
-    getFixturePath('nested2.json'),
-    getFixturePath('nested-expected.txt'),
+    'nested1.json',
+    'nested2.json',
+    'nested-expected.txt',
     'stylish',
   ],
   [
-    getFixturePath('nested1.json'),
-    getFixturePath('nested2.json'),
-    getFixturePath('nested-plain-expected.txt'),
+    'nested1.json',
+    'nested2.json',
+    'nested-plain-expected.txt',
     'plain',
   ],
   [
-    getFixturePath('nested1.json'),
-    getFixturePath('nested2.json'),
-    getFixturePath('nested-json-expected.txt'),
+    'nested1.json',
+    'nested2.json',
+    'nested-json-expected.txt',
     'json',
   ],
 ];
@@ -47,7 +47,11 @@ const cases = [
 describe('Should compare files', () => {
   test.each(cases)(
     'Filepath1: %p, Filepath2: %p, Expectedpath: %p, Format: %p',
-    (filepath1, filepath2, filepath3, format) => {
+    (filename1, filename2, filename3, format) => {
+      const filepath1 = getFixturePath(filename1);
+      const filepath2 = getFixturePath(filename2);
+      const filepath3 = getFixturePath(filename3);
+
       const expected = readFile(filepath3);
       const actual = genDiff(filepath1, filepath2, format);
 

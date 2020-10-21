@@ -71,8 +71,8 @@ const getDiff = (data1, data2) => {
 };
 
 const genDiff = (filepath1, filepath2, format) => {
-  const path1 = path.resolve(filepath1);
-  const path2 = path.resolve(filepath2);
+  const path1 = path.resolve(process.cwd(), filepath1);
+  const path2 = path.resolve(process.cwd(), filepath2);
 
   const data1 = getParser(path.extname(path1).slice(1))(fs.readFileSync(path1, 'utf-8'));
   const data2 = getParser(path.extname(path2).slice(1))(fs.readFileSync(path2, 'utf-8'));
