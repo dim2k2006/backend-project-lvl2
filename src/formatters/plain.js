@@ -1,6 +1,5 @@
 import head from 'lodash/head.js';
 import tail from 'lodash/tail.js';
-import flattenDeep from 'lodash/flattenDeep.js';
 import isObject from 'lodash/isObject.js';
 import isString from 'lodash/isString.js';
 import find from 'lodash/find.js';
@@ -39,7 +38,7 @@ const nodeTypes = {
 
 const plain = (ast) => {
   const iter = (tree, acc, path = '') => {
-    if (!tree.length) return flattenDeep(acc);
+    if (!tree.length) return acc.flat(Infinity);
 
     const node = head(tree);
 
