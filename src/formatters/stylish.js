@@ -1,5 +1,3 @@
-import head from 'lodash/head.js';
-import tail from 'lodash/tail.js';
 import isObject from 'lodash/isObject.js';
 import toPairs from 'lodash/toPairs.js';
 
@@ -25,7 +23,7 @@ const toString = (value, depth) => {
 };
 
 const nodeTypes = {
-  NESTED: (node, depth, fn) => [`  ${node.key}: ${fn(node.value, [], depth + 1)}`],
+  NESTED: (node, depth, fn) => [`  ${node.key}: ${fn(node.value, depth + 1)}`],
   ADDED: (node, depth) => [`+ ${node.key}: ${toString(node.value, depth + 1)}`],
   REMOVED: (node, depth) => [`- ${node.key}: ${toString(node.value, depth + 1)}`],
   CHANGED: (node, depth) => [`- ${node.key}: ${toString(node.prevValue, depth + 1)}`, `+ ${node.key}: ${toString(node.value, depth + 1)}`],
@@ -33,22 +31,20 @@ const nodeTypes = {
 };
 
 const stylish = (ast) => {
-  const iter = (tree, acc, depth = 1) => {
-    if (!tree.length) {
-      return `${startChar}\n${acc.join('\n')}\n${depth > 1 ? getEndCharIndentation(depth) : ''}${endChar}`;
-    }
+  const iter = (tree, depth = 1) => {
+    const result = tree.map((node) => {
+      const process = nodeTypes[node.type];
 
-    const node = head(tree);
+      const processedNode = process(node, depth, iter)
+        .map((item) => `${getIndentation(depth)}${item}`);
 
-    const process = nodeTypes[node.type];
+      return processedNode.join('\n');
+    });
 
-    const result = process(node, depth, iter)
-      .map((item) => `${getIndentation(depth)}${item}`);
-
-    return iter(tail(tree), [...acc, ...result], depth);
+    return `${startChar}\n${result.join('\n')}\n${depth > 1 ? getEndCharIndentation(depth) : ''}${endChar}`;
   };
 
-  const result = iter(ast, []);
+  const result = iter(ast);
 
   return result;
 };
