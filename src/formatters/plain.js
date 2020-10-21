@@ -30,10 +30,10 @@ const genPath = (path, part) => `${path ? `${path}.${part}` : part}`;
 
 const nodeTypes = {
   NESTED: (node, path, fn) => fn(node.value, [], genPath(path, node.key)),
-  ADDED: (node, path) => [`Property '${genPath(path, node.key)}' was added with value: ${toString(node.value)}`],
-  REMOVED: (node, path) => [`Property '${genPath(path, node.key)}' was removed`],
-  CHANGED: (node, path) => [`Property '${genPath(path, node.key)}' was updated. From ${toString(node.prevValue)} to ${toString(node.value)}`],
-  UNCHANGED: () => [],
+  ADDED: (node, path) => `Property '${genPath(path, node.key)}' was added with value: ${toString(node.value)}`,
+  REMOVED: (node, path) => `Property '${genPath(path, node.key)}' was removed`,
+  CHANGED: (node, path) => `Property '${genPath(path, node.key)}' was updated. From ${toString(node.prevValue)} to ${toString(node.value)}`,
+  UNCHANGED: () => '',
 };
 
 const plain = (ast) => {
@@ -46,7 +46,9 @@ const plain = (ast) => {
 
     const result = process(node, path, iter);
 
-    return iter(tail(tree), [...acc, ...result], path);
+    const newAcc = result ? [...acc, result] : acc;
+
+    return iter(tail(tree), newAcc, path);
   };
 
   const result = iter(ast, [], '');
