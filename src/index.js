@@ -3,64 +3,52 @@ import fs from 'fs';
 import keys from 'lodash/keys.js';
 import union from 'lodash/union.js';
 import has from 'lodash/has.js';
-import find from 'lodash/find.js';
 import isPlainObject from 'lodash/isPlainObject.js';
 import getParser from './parsers.js';
 import getFormatter from './formatters/index.js';
 
 const getDiff = (data1, data2) => {
-  const diffs = [
-    {
-      checker: (key) => isPlainObject(data1[key]) && isPlainObject(data2[key]),
-      process: (key) => ({
-        type: 'NESTED',
-        key,
-        value: getDiff(data1[key], data2[key]),
-      }),
-    },
-    {
-      checker: (key) => !has(data1, key) && has(data2, key),
-      process: (key) => ({
-        type: 'ADDED',
-        key,
-        value: data2[key],
-      }),
-    },
-    {
-      checker: (key) => has(data1, key) && !has(data2, key),
-      process: (key) => ({
-        type: 'REMOVED',
-        key,
-        value: data1[key],
-      }),
-    },
-    {
-      checker: (key) => has(data1, key) && has(data2, key) && data1[key] !== data2[key],
-      process: (key) => ({
-        type: 'CHANGED',
-        key,
-        prevValue: data1[key],
-        value: data2[key],
-      }),
-    },
-    {
-      checker: (key) => has(data1, key) && has(data2, key) && data1[key] === data2[key],
-      process: (key) => ({
-        type: 'UNCHANGED',
-        key,
-        value: data1[key],
-      }),
-    },
-  ];
-
   const result = union(keys(data1), keys(data2))
     .sort()
     .map((key) => {
-      const { process } = find(diffs, ({ checker }) => checker(key));
+      if (isPlainObject(data1[key]) && isPlainObject(data2[key])) {
+        return {
+          type: 'NESTED',
+          key,
+          value: getDiff(data1[key], data2[key]),
+        };
+      }
 
-      const node = process(key);
+      if (!has(data1, key) && has(data2, key)) {
+        return {
+          type: 'ADDED',
+          key,
+          value: data2[key],
+        };
+      }
 
-      return node;
+      if (has(data1, key) && !has(data2, key)) {
+        return {
+          type: 'REMOVED',
+          key,
+          value: data1[key],
+        };
+      }
+
+      if (has(data1, key) && has(data2, key) && data1[key] !== data2[key]) {
+        return {
+          type: 'CHANGED',
+          key,
+          prevValue: data1[key],
+          value: data2[key],
+        };
+      }
+
+      return {
+        type: 'UNCHANGED',
+        key,
+        value: data1[key],
+      };
     });
 
   return result;
