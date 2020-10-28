@@ -36,7 +36,7 @@ const nodeTypes = {
 
 const plain = (ast) => {
   const iter = (tree, path = '') => {
-    const result = tree.map((node) => {
+    const result = tree.flatMap((node) => {
       const process = nodeTypes[node.type];
 
       const processedNode = process(node, path, iter);
@@ -45,7 +45,6 @@ const plain = (ast) => {
     });
 
     return result
-      .flat(Infinity)
       .filter((item) => item);
   };
 
