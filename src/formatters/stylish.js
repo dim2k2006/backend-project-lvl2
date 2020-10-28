@@ -1,5 +1,6 @@
 import isObject from 'lodash/isObject.js';
 import toPairs from 'lodash/toPairs.js';
+import isArray from 'lodash/isArray.js';
 
 const placeholder = ' ';
 const indent = 4;
@@ -23,11 +24,11 @@ const toString = (value, depth) => {
 };
 
 const nodeTypes = {
-  NESTED: (node, depth, fn) => [`  ${node.key}: ${fn(node.value, depth + 1)}`],
-  ADDED: (node, depth) => [`+ ${node.key}: ${toString(node.value, depth + 1)}`],
-  REMOVED: (node, depth) => [`- ${node.key}: ${toString(node.value, depth + 1)}`],
+  NESTED: (node, depth, fn) => `  ${node.key}: ${fn(node.value, depth + 1)}`,
+  ADDED: (node, depth) => `+ ${node.key}: ${toString(node.value, depth + 1)}`,
+  REMOVED: (node, depth) => `- ${node.key}: ${toString(node.value, depth + 1)}`,
   CHANGED: (node, depth) => [`- ${node.key}: ${toString(node.valueBefore, depth + 1)}`, `+ ${node.key}: ${toString(node.valueAfter, depth + 1)}`],
-  UNCHANGED: (node, depth) => [`  ${node.key}: ${toString(node.value, depth + 1)}`],
+  UNCHANGED: (node, depth) => `  ${node.key}: ${toString(node.value, depth + 1)}`,
 };
 
 const stylish = (ast) => {
@@ -35,10 +36,15 @@ const stylish = (ast) => {
     const result = tree.map((node) => {
       const process = nodeTypes[node.type];
 
-      const processedNode = process(node, depth, iter)
-        .map((item) => `${getIndentation(depth)}${item}`);
+      const processedNode = process(node, depth, iter);
 
-      return processedNode.join('\n');
+      const formattedResult = isArray(processedNode)
+        ? processedNode
+          .map((item) => `${getIndentation(depth)}${item}`)
+          .join('\n')
+        : `${getIndentation(depth)}${processedNode}`;
+
+      return formattedResult;
     });
 
     return `${startChar}\n${result.join('\n')}\n${depth > 1 ? getEndCharIndentation(depth) : ''}${endChar}`;
