@@ -26,7 +26,7 @@ const nodeTypes = {
   NESTED: (node, depth, fn) => [`  ${node.key}: ${fn(node.value, depth + 1)}`],
   ADDED: (node, depth) => [`+ ${node.key}: ${toString(node.value, depth + 1)}`],
   REMOVED: (node, depth) => [`- ${node.key}: ${toString(node.value, depth + 1)}`],
-  CHANGED: (node, depth) => [`- ${node.key}: ${toString(node.prevValue, depth + 1)}`, `+ ${node.key}: ${toString(node.value, depth + 1)}`],
+  CHANGED: (node, depth) => [`- ${node.key}: ${toString(node.valueBefore, depth + 1)}`, `+ ${node.key}: ${toString(node.valueAfter, depth + 1)}`],
   UNCHANGED: (node, depth) => [`  ${node.key}: ${toString(node.value, depth + 1)}`],
 };
 

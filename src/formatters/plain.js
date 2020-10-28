@@ -30,7 +30,7 @@ const nodeTypes = {
   NESTED: (node, path, fn) => fn(node.value, genPath(path, node.key)),
   ADDED: (node, path) => `Property '${genPath(path, node.key)}' was added with value: ${toString(node.value)}`,
   REMOVED: (node, path) => `Property '${genPath(path, node.key)}' was removed`,
-  CHANGED: (node, path) => `Property '${genPath(path, node.key)}' was updated. From ${toString(node.prevValue)} to ${toString(node.value)}`,
+  CHANGED: (node, path) => `Property '${genPath(path, node.key)}' was updated. From ${toString(node.valueBefore)} to ${toString(node.valueAfter)}`,
   UNCHANGED: () => '',
 };
 

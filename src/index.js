@@ -39,8 +39,8 @@ const getDiff = (data1, data2) => {
         return {
           type: 'CHANGED',
           key,
-          prevValue: data1[key],
-          value: data2[key],
+          valueBefore: data1[key],
+          valueAfter: data2[key],
         };
       }
 

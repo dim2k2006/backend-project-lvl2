@@ -21,8 +21,8 @@
       {
         "type": "CHANGED",
         "key": "setting3",
-        "prevValue": true,
-        "value": {
+        "valueBefore": true,
+        "valueAfter": {
           "key": "value"
         }
       },
@@ -49,8 +49,8 @@
               {
                 "type": "CHANGED",
                 "key": "wow",
-                "prevValue": "too much",
-                "value": "so much"
+                "valueBefore": "too much",
+                "valueAfter": "so much"
               }
             ]
           },
@@ -75,8 +75,8 @@
       {
         "type": "CHANGED",
         "key": "baz",
-        "prevValue": "bas",
-        "value": "bars"
+        "valueBefore": "bas",
+        "valueAfter": "bars"
       },
       {
         "type": "UNCHANGED",
@@ -86,10 +86,10 @@
       {
         "type": "CHANGED",
         "key": "nest",
-        "prevValue": {
+        "valueBefore": {
           "key": "value"
         },
-        "value": "str"
+        "valueAfter": "str"
       }
     ]
   },
