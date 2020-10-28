@@ -31,7 +31,7 @@ const nodeTypes = {
   ADDED: (node, path) => `Property '${genPath(path, node.key)}' was added with value: ${toString(node.value)}`,
   REMOVED: (node, path) => `Property '${genPath(path, node.key)}' was removed`,
   CHANGED: (node, path) => `Property '${genPath(path, node.key)}' was updated. From ${toString(node.valueBefore)} to ${toString(node.valueAfter)}`,
-  UNCHANGED: () => '',
+  UNCHANGED: () => null,
 };
 
 const plain = (ast) => {
@@ -46,7 +46,7 @@ const plain = (ast) => {
 
     return result
       .flat(Infinity)
-      .filter((item) => item !== '');
+      .filter((item) => item);
   };
 
   const result = iter(ast, '');
