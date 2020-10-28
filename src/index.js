@@ -19,7 +19,7 @@ const getDiff = (data1, data2) => {
         };
       }
 
-      if (!has(data1, key) && has(data2, key)) {
+      if (!has(data1, key)) {
         return {
           type: 'ADDED',
           key,
