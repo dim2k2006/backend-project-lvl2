@@ -7,6 +7,10 @@ import isPlainObject from 'lodash/isPlainObject.js';
 import getParser from './parsers.js';
 import getFormatter from './formatters/index.js';
 
+const getFileExtension = (filepath) => path.extname(filepath).slice(1);
+
+const genFullFilePath = (filepath) => path.resolve(process.cwd(), filepath);
+
 const getDiff = (data1, data2) => {
   const result = union(keys(data1), keys(data2))
     .sort()
@@ -55,11 +59,14 @@ const getDiff = (data1, data2) => {
 };
 
 const genDiff = (filepath1, filepath2, format) => {
-  const path1 = path.resolve(process.cwd(), filepath1);
-  const path2 = path.resolve(process.cwd(), filepath2);
+  const path1 = genFullFilePath(filepath1);
+  const path2 = genFullFilePath(filepath2);
 
-  const data1 = getParser(path.extname(path1).slice(1))(fs.readFileSync(path1, 'utf-8'));
-  const data2 = getParser(path.extname(path2).slice(1))(fs.readFileSync(path2, 'utf-8'));
+  const extension1 = getFileExtension(path1);
+  const extension2 = getFileExtension(path2);
+
+  const data1 = getParser(extension1)(fs.readFileSync(path1, 'utf-8'));
+  const data2 = getParser(extension2)(fs.readFileSync(path2, 'utf-8'));
 
   const diff = getDiff(data1, data2);
 
